@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Oswald:wght@200;400;500&display=swap");
+
 // VARS
 $nav-height: 100px;
 $main-height: calc(100% - $nav-height);
@@ -7,6 +10,11 @@ $tertiary-color: lime;
 $text-main-color: #8e8e8e;
 $bg1-color: #242424;
 $bg2-color: #1a1a1a;
+$bg3-color: #151515;
+$bg4-color: #2d1c3c;
+$bg5-color: #1e2a0f;
+$border1-color: #4e4e4e;
+$border2-color: #54811a;
 $border-radius: 8px;
 
 body,
@@ -47,28 +55,30 @@ body {
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: white;
   text-decoration: inherit;
   &:hover {
-    color: #535bf2;
+    color: $secondary-color;
   }
   &.active {
-    color: $text-main-color;
+    // color: $text-main-color;
+    padding-bottom: 2px;
+    border-bottom: 1px solid $border2-color;
   }
 }
 
 button {
   border-radius: $border-radius;
-  border: 1px solid transparent;
+  border: 1px solid #646cff;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: $bg4-color;
   cursor: pointer;
   transition: border-color 0.25s;
   &:hover {
-    border-color: #646cff;
+    background-color: #38006a;
   }
   &:focus,
   &:focus-visible {
@@ -98,8 +108,11 @@ h1 {
 nav {
   width: 100%;
   height: $nav-height;
-  border-bottom: 1px solid $primary-color;
-  p {
+  // border-bottom: 1px solid $border2-color;
+  background-image: linear-gradient(180deg, transparent, $bg3-color);
+  p.site-jm {
+    font-family: "Oswald", sans-serif;
+    font-size: 30px;
     margin: 0px;
     padding: 8px 0px;
   }
@@ -118,9 +131,10 @@ nav {
   //   }
   // }
   a {
-    padding-left: 16px;
-    &:first-child {
-      padding-left: 0;
+    margin-left: 16px;
+
+    &#Home {
+      margin-left: 0px;
     }
   }
 }
@@ -132,17 +146,29 @@ main {
 }
 
 section.side-bar {
-  background-color: black;
+  background-color: $bg3-color;
+  border-right: 1px solid $border1-color;
   // height: 100vh;
   width: 250px;
   // height: 100%;
   // display: flex;
   // flex-direction: column;
 
+  button {
+    margin-top: 48px;
+  }
+
   ul.chat-history {
+    padding: 0 32px;
     li {
+      padding: 16px;
       list-style: none;
+      border-bottom: 1px solid $border2-color;
       cursor: pointer;
+      &:hover {
+        background-color: $bg5-color;
+        // animation: fadeInOut 3s infinite;
+      }
     }
   }
 }
@@ -161,6 +187,9 @@ section.content {
 
   header {
     margin-bottom: auto !important;
+    h1 {
+      font-family: "Kaushan Script", cursive;
+    }
   }
 
   .current-title {
@@ -207,18 +236,62 @@ section.content {
       color: $tertiary-color;
       font-size: 0.8rem;
     }
+    button {
+      margin-left: 16px;
+    }
   }
 }
 
-// @media (prefers-color-scheme: light) {
-//   :root {
-//     color: #213547;
-//     background-color: #ffffff;
-//   }
-//   a:hover {
-//     color: #747bff;
-//   }
-//   button {
-//     background-color: #f9f9f9;
-//   }
-// }
+div.homepage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  section {
+    border: 1px solid $border1-color;
+    border-radius: $border-radius;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: $bg3-color;
+    padding: 16px;
+    margin-top: 32px;
+  }
+
+  @media screen and (min-width: 767px) {
+    section {
+      width: 480px;
+    }
+  }
+}
+
+div.error-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  section {
+    width: 100%;
+    padding: 16px;
+    margin-top: 32px;
+  }
+
+  @media screen and (min-width: 767px) {
+    section {
+      width: 480px;
+    }
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

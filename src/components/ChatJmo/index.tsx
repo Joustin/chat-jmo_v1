@@ -61,7 +61,9 @@ const ChatJmo = () => {
   return (
     <>
       <section className="side-bar">
-        <button onClick={() => createNewChat()}>+ new chat</button>
+        {!!previousChats.length && (
+          <button onClick={() => createNewChat()}>Start New Chat</button>
+        )}
         <ul className="chat-history">
           {uniqueTitles?.map((title, index) => (
             <li key={index} onClick={() => handleChatClick(title)}>

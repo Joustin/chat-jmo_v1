@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import MainNav from "./components/MainNav";
 import ChatJmo from "./components/ChatJmo";
+import Home from "./components/Home";
+import Error from "./components/Error";
 import "./scss/main.scss";
 
 const App = () => {
@@ -9,10 +11,9 @@ const App = () => {
       <MainNav />
       <main>
         <Routes>
-          <Route index element={<ChatJmo />} />
+          <Route path="/" element={<Home />} />
           <Route path="/chat" element={<ChatJmo />} />
-          {/* @TODO - Make a noMatch page
-          <Route path="*" element={<NoMatch />} /> */}
+          <Route path="*" element={<Error />} />
         </Routes>
       </main>
     </>
